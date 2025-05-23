@@ -26,7 +26,7 @@ def chat():
             "text": {"body": texto}
         }
         headers = {
-            "D360-API-KEY": "yxKGn4IO24k4MRONILaJxG7xAK"
+            "D360-API-KEY": "PON_AQUI_TU_API_KEY"
         }
         requests.post("https://waba-v2.360dialog.io/messages", json=payload, headers=headers)
         return redirect("/chat")
