@@ -27,7 +27,7 @@ def chat():
             "text": {"body": texto}
         }
         headers = {
-            "D360-API-KEY": "REEMPLAZA_CON_TU_API_KEY"
+            "D360-API-KEY": "[{"key":"D360-API-KEY","value":"yxKGn4IO24k4MRONILaJxG7xAK","description":"","type":"text","uuid":"04958c26-3d1b-46aa-8da7-fe9aa4b4ef90","enabled":true}]"
         }
         requests.post("https://waba-v2.360dialog.io/messages", json=payload, headers=headers)
         return redirect("/chat")
