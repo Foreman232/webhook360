@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhatsApp Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+    .chatbox { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+    .msg { background: #dcf8c6; padding: 10px; margin: 5px 0; border-radius: 5px; }
+    .form-group { margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="chatbox">
+    <h2>Chat WhatsApp</h2>
+    {% for m in mensajes %}
+      <div class="msg">{{ m }}</div>
+    {% endfor %}
+    <form action="/chat" method="POST">
+      <div class="form-group">
+        <input type="text" name="numero" placeholder="Número con código de país" required style="width: 100%; padding: 8px;">
+      </div>
+      <div class="form-group">
+        <input type="text" name="mensaje" placeholder="Mensaje" required style="width: 100%; padding: 8px;">
+      </div>
+      <button type="submit" style="padding: 10px 20px;">Enviar</button>
+    </form>
+  </div>
+</body>
+</html>
