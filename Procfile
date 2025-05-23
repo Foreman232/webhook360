@@ -1,3 +1,4 @@
-gunicorn your_application.wsgi
+web: gunicorn main:app
+
 
 
