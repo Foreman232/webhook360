@@ -1,6 +1,6 @@
-
 from flask import Flask, request, jsonify, render_template
 import os
+import requests
 
 app = Flask(__name__)
 mensajes = []
@@ -8,6 +8,10 @@ mensajes = []
 @app.route("/")
 def home():
     return render_template("inbox.html")
+
+@app.route("/chat")
+def chat():
+    return render_template("chat.html")
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
@@ -30,19 +34,17 @@ def get_messages():
 @app.route("/send", methods=["POST"])
 def send_message():
     data = request.get_json()
-    import requests
     headers = {
         "Authorization": "Bearer yxKGn4IO24k4MRONILaJxG7xAK",
         "Content-Type": "application/json"
     }
     payload = {
         "messaging_product": "whatsapp",
-        "to": data["to"],
+        "to": data["numero"],
         "type": "text",
-        "text": {"body": data["text"]}
+        "text": {
+            "body": data["mensaje"]
+        }
     }
-    r = requests.post("https://waba-v2.360dialog.io/messages", json=payload, headers=headers)
-    return jsonify(r.json())
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    response = requests.post("https://waba-v2.360dialog.io/messages", headers=headers, json=payload)
+    return response.json()
