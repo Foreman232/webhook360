@@ -11,7 +11,7 @@ def webhook():
     elif request.method == 'POST':
         data = request.get_json()
         mensajes.append(data)
-        print("🟣 Mensaje recibido:", data)
+        print("📩 Mensaje recibido:", data)
         return 'ok', 200
 
 @app.route('/chat', methods=['GET', 'POST'])
@@ -26,12 +26,8 @@ def chat():
             "text": {"body": texto}
         }
         headers = {
-            "D360-API-KEY": "yxKGn4IO24k4MRONILaJxG7xAK"
+            "D360-API-KEY": "PON_AQUI_TU_API_KEY"
         }
         requests.post("https://waba-v2.360dialog.io/messages", json=payload, headers=headers)
         return redirect('/chat')
-
-    return render_template('chat.html', mensajes=mensajes)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return render_template("chat.html", mensajes=mensajes)
