@@ -1,4 +1,3 @@
-
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -21,4 +20,4 @@ def receive():
     return "ok", 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000)
+    app.run(host='0.0.0.0', port=10000)
