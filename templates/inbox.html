@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bandeja de Entrada WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ece5dd;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 0;
+            color: #075e54;
+        }
+        .chat-box {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: #fafafa;
+        }
+        .chat-message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: #dcf8c6;
+        }
+        .chat-message .from {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .chat-message .time {
+            font-size: 12px;
+            color: #555;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📥 Bandeja de Entrada WhatsApp</h2>
+        <div class="chat-box">
+            {% for msg in mensajes %}
+                <div class="chat-message">
+                    <div class="from">📱 {{ msg['from'] }}</div>
+                    <div class="text">📝 {{ msg['text'] }}</div>
+                    <div class="time">{{ msg['timestamp'] }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
