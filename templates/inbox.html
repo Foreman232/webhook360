@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bandeja de Entrada WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eee5da;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 600px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .message {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .message:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #006c5f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📥 Bandeja de Entrada WhatsApp</h2>
+        {% for msg in mensajes %}
+            <div class="message">{{ msg }}</div>
+        {% endfor %}
+    </div>
+</body>
+</html>
