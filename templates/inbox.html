@@ -5,37 +5,43 @@
     <title>Bandeja de Entrada WhatsApp</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #eee5da;
-            display: flex;
-            justify-content: center;
-            padding-top: 40px;
+            font-family: Arial;
+            background-color: #f3e9dd;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            background-color: #fff;
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
             padding: 20px;
             border-radius: 8px;
-            width: 600px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-        .message {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
-        .message:last-child {
-            border-bottom: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         h2 {
-            color: #006c5f;
+            color: #036653;
+        }
+        .mensaje {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .mensaje:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>📥 Bandeja de Entrada WhatsApp</h2>
-        {% for msg in mensajes %}
-            <div class="message">{{ msg }}</div>
-        {% endfor %}
+        <h2>📉 Bandeja de Entrada WhatsApp</h2>
+        {% if mensajes %}
+            {% for m in mensajes %}
+                <div class="mensaje">
+                    <strong>{{ m.from }}</strong>: {{ m.text }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No hay mensajes recibidos aún.</p>
+        {% endif %}
     </div>
 </body>
 </html>
