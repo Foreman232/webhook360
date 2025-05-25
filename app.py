@@ -13,6 +13,7 @@ def webhook():
         mensajes.append(data)
         print("📩 Mensaje recibido:", data)
         return "ok", 200
+    return "Método no permitido", 405
 
 @app.route("/chat", methods=["GET", "POST"])
 def chat():
@@ -26,7 +27,7 @@ def chat():
             "text": {"body": texto}
         }
         headers = {
-            "D360-API-KEY": "yxKGn4IO24k4MRONILaJxG7xAK"
+            "D360-API-KEY": "REEMPLAZA_CON_TU_API_KEY"
         }
         requests.post("https://waba-v2.360dialog.io/messages", json=payload, headers=headers)
         return redirect("/chat")
