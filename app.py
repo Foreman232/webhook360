@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
+import requests
 
 app = Flask(__name__)
 mensajes = []
@@ -13,6 +14,20 @@ def webhook():
         print("📩 Mensaje recibido:", data)
         return "ok", 200
 
-@app.route("/chat", methods=["GET"])
+@app.route("/chat", methods=["GET", "POST"])
 def chat():
-    return render_template("chat.html")
+    if request.method == "POST":
+        telefono = request.form["numero"]
+        texto = request.form["mensaje"]
+        payload = {
+            "recipient_type": "individual",
+            "to": telefono,
+            "type": "text",
+            "text": {"body": texto}
+        }
+        headers = {
+            "D360-API-KEY": "PON_AQUI_TU_API_KEY"
+        }
+        requests.post("https://waba-v2.360dialog.io/messages", json=payload, headers=headers)
+        return redirect("/chat")
+    return render_template("chat.html", mensajes=mensajes)
